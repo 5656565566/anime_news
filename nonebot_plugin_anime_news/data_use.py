@@ -15,5 +15,5 @@ def get_to_day_anime():
             if is_today(time):
                 to_day_anime = to_day_anime + f"《{anime['headline'][40:-4]}》    播出时间: {time}" + "\n"
     except:
-        to_day_anime = f"芙兰发现，今天没有番剧更新，明天再来问吧..."
+        to_day_anime = f"今天没有番剧更新，明天再来问吧..."
     return to_day_anime
