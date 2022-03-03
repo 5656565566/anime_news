@@ -13,7 +13,6 @@ def get_to_day_anime():
         for anime in info_data['timeline']['date']:
             time = datetime.datetime.strptime(anime['startDate'], '%Y-%m-%dT%H:%M:%S.%fZ') + datetime.timedelta(hours=8)
             if is_today(time):
-                #print(time, anime['headline'][40:-4], anime['text'], anime['asset'])
                 to_day_anime = to_day_anime + f"《{anime['headline'][40:-4]}》    播出时间: {time}" + "\n"
     except:
         to_day_anime = f"芙兰发现，今天没有番剧更新，明天再来问吧..."
