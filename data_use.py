@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-from utils.botutils import what_time, is_today, get_time_date
+from .time import what_time, is_today, get_time_date
 import datetime
 
 def get_to_day_anime():
