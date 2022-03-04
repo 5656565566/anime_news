@@ -1,13 +1,24 @@
 from .data_use import get_to_day_anime
 from .get import get_data
 
-from nonebot import require
+import os
+from pathlib import Path
+
 from nonebot.permission import SUPERUSER
-from nonebot import on_command, on_regex
+from nonebot import on_command, on_regex, logger, require
 from nonebot.rule import to_me
 from nonebot.adapters import Bot , Event
 
-from typing import Union
+path = Path(__file__).parent
+
+if not os.path.isfile(str(path) + "\\anime_list\\data.json"):
+    os.mkdir(str(path) + "\\anime_list")
+    get_data()
+    logger.info("创建存储用json并成功加载插件!")
+else:
+    logger.info("番剧时间表加载成功!")
+    
+
 today_anime = on_regex(r'^(今日|今天|今)+.*(新番|番|动漫|番剧)+', priority=5, block=True, rule=to_me())
 get_anime = on_command('get anime', aliases={"更新番剧时间表"}, permission=SUPERUSER, priority=5, block=True)
 
